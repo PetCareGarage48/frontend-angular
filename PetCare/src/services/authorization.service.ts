@@ -5,11 +5,16 @@ export interface AuthUserData {
   password: string;
 }
 
+const mockUser = {
+  email: 'admin@mail.com',
+  password: 'qwer1234'
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService {
-  isAuthorized: boolean;
+  isAuthorized = false;
 
   get isUserAuthorized() {
     return this.isAuthorized;
@@ -17,8 +22,12 @@ export class AuthorizationService {
 
   constructor() { }
 
-  login(data: AuthUserData) {
-    if (data.email === 'admin@mail.com' && data.password === 'qwer1234') {
+  login(form) {
+    if (form.invalid) {
+      return;
+    }
+    // TODO: remove mock data;
+    if (form.value.email === mockUser.email && form.value.password === mockUser.password) {
       this.isAuthorized = true;
     } else {
       this.isAuthorized = false;
