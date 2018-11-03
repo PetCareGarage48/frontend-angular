@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>{{title}} {{pet.name}} Info</h1>
+<div mat-dialog-content>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Name" [(ngModel)]="pet.name">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Age" [(ngModel)]="pet.age">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Description" [(ngModel)]="pet.description">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Breed" [(ngModel)]="pet.breed">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+    <button mat-raised-button color="primary" (click)="update()" cdkFocusInitial>{{title}}</button>
+</div>

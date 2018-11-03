@@ -14,6 +14,8 @@ import { NgModule } from '@angular/core';
 import { PetsListComponent } from './components/pets-list/pets-list.component';
 import { ShelterComponent } from './components/shelter/shelter.component';
 import { PetComponent } from './components/pet/pet.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PetFormComponent } from './components/pet-form/pet-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { PetComponent } from './components/pet/pet.component';
     PetComponent,
     PetsListComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    PetFormComponent
   ],
   imports: [
     HttpClientModule,
@@ -30,6 +33,11 @@ import { PetComponent } from './components/pet/pet.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  entryComponents: [
+    PetFormComponent
   ],
   providers: [
     PetService,

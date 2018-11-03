@@ -40,4 +40,8 @@ export class ShelterService {
     addShelter(item: Shelter) {
         return this.http.post<Shelter>(this.serverLink + '/v1/shelter/register', item);
     }
+
+    updateShelter(item: Shelter) {
+        return this.http.put<Shelter>(this.serverLink + '/v1/shelter', item);
+    }
 }
