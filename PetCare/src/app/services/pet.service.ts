@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 import { pets } from '../../mocks/pets.js';
 import { of } from 'rxjs';
 
 
 export interface Pet {
   name: string;
-  age: string;
+  age: number;
   description: string;
-  breed: string;
-  photo: string;
+  type: string;
+  gender: string;
+  photos: string[];
 }
 
 @Injectable()
@@ -20,8 +22,8 @@ export class PetService {
   constructor(private http: HttpClient) { }
 
     getPets() {
-        return of(pets);
-        // this.http.get<Pet[]>(this.serverLink + '/v1/pets');
+        return this.http.get<any>(this.serverLink + '/v1/pets')
+        .pipe(map(res => res.data.map(p => p as Pet)));
     }
 
     addPet(item: Pet) {

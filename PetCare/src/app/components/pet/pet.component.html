@@ -1,11 +1,11 @@
 <mat-card class="pet-card">
     <mat-card-header>
-        <mat-card-title>{{ pet.name }}</mat-card-title>
+        <mat-card-title>{{pet.type}} {{ pet.name }}</mat-card-title>
         <mat-card-subtitle>{{ pet.age }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image class="pet-image" [src]="pet.photo">
+    <img mat-card-image class="pet-image" [src]="getPhoto()">
     <mat-card-content>
-        <p>{{ pet.breed }}</p>
+        <p>{{ pet.gender }}</p>
         <span>{{ pet.description }}</span>
     </mat-card-content>
     <mat-card-actions>

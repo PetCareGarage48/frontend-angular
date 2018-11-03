@@ -16,6 +16,10 @@ export class PetComponent implements OnInit {
   ngOnInit() {
   }
 
+  public getPhoto() {
+    return this.pet.photos ?  this.pet.photos[0] : 'assets/no-img.png';
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(PetFormComponent, {
       width: '600px',

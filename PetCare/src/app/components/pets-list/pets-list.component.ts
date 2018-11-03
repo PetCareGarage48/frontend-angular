@@ -15,12 +15,15 @@ export class PetsListComponent implements OnInit {
 
   ngOnInit() {
     this.service.getPets()
-    .subscribe(pets => this.pets = pets);
+    .subscribe(pets => {
+      console.log(pets);
+      this.pets = pets;
+    });
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(PetFormComponent, {
-      width: '600px',      
+      width: '600px',
       data: {isCreate: true, pet: {}}
     });
 
