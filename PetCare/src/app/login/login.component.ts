@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, NgForm, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+
+import { AuthorizationService } from "../../services/authorization.service"
 
 @Component({
   selector: "app-login",
@@ -11,7 +14,10 @@ export class LoginComponent implements OnInit {
   email = '';
   password = '';
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private authorizationService: AuthorizationService,
+  ) {}
 
   ngOnInit() {
     this.authForm = new FormGroup({
@@ -26,5 +32,7 @@ export class LoginComponent implements OnInit {
 
   authorize(formData) {
     console.log("form data: ", formData.value);
+    this.authorizationService.login(formData);
+    this.router.navigate(['home']);
   }
 }

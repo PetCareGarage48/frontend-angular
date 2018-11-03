@@ -9,23 +9,23 @@ export interface AuthUserData {
   providedIn: 'root'
 })
 export class AuthorizationService {
-  userData: boolean;
+  isAuthorized: boolean;
 
-  get isAuthorized() {
-    return true;
+  get isUserAuthorized() {
+    return this.isAuthorized;
   }
 
   constructor() { }
 
   login(data: AuthUserData) {
     if (data.email === 'admin@mail.com' && data.password === 'qwer1234') {
-      this.userData = true;
+      this.isAuthorized = true;
     } else {
-      this.userData = false;
+      this.isAuthorized = false;
     }
   }
 
   logOut() {
-    this.userData = false;
+    this.isAuthorized = false;
   }
 }
