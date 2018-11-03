@@ -24,7 +24,7 @@ export class ShelterService {
 
   constructor(private http: HttpClient) { }
 
-    getShelter(): Observable<Shelter> {
+    getShelter(shelterId): Observable<Shelter> {
       const sheltr = {
         name: 'Charity',
         email: 'charity@gmail.com',
@@ -34,7 +34,7 @@ export class ShelterService {
       };
 
         return of(sheltr as Shelter);
-        // this.http.get<Shelter>(this.serverLink + '/v1/shelter');
+        // this.http.get<Shelter>(this.serverLink + '/v1/shelters/shelter?shelterId='+shelterId);
     }
 
     addShelter(item: Shelter) {
