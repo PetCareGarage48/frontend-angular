@@ -1,17 +1,24 @@
 <header>
-  <mat-toolbar>
-    <h1>
-      {{ title }} <i class="material-icons">pets</i>
-    </h1>
+    <mat-toolbar>
+        <h1>
+            {{ title }} <i class="material-icons">pets</i>
+        </h1>
 
-    <button mat-direction="right" mat-icon-button [matMenuTriggerFor]="appMenu">
+        <button mat-direction="right" mat-icon-button [matMenuTriggerFor]="appMenu">
       <mat-icon>menu</mat-icon>
     </button>
-    <mat-menu #appMenu="matMenu">
-      <button mat-menu-item routerLink="/login" routerLinkActive="active">Login page</button>
-      <button mat-menu-item routerLink="/home" routerLinkActive="active">Home page</button>
-    </mat-menu>
-  </mat-toolbar>
+        <mat-menu #appMenu="matMenu">
+            <button mat-menu-item routerLink="/login" routerLinkActive="active">Login page</button>
+            <button mat-menu-item routerLink="/home" routerLinkActive="active">Home page</button>
+        </mat-menu>
+    </mat-toolbar>
 </header>
 
 <router-outlet></router-outlet>
+<mat-toolbar class="footer" color="primary">
+    <mat-toolbar-row>
+        <span>PetCare. All rights reserved. </span>
+        <span class="example-spacer"></span>
+        <mat-icon class="example-icon">verified_user</mat-icon>
+    </mat-toolbar-row>
+</mat-toolbar>
