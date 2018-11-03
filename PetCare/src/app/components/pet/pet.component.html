@@ -5,11 +5,11 @@
     </mat-card-header>
     <img mat-card-image class="pet-image" [src]="pet.photo">
     <mat-card-content>
-        <p>{{ pet.address }}</p>
+        <p>{{ pet.breed }}</p>
         <span>{{ pet.description }}</span>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary">Edit</button>
+        <button mat-raised-button color="primary" (click)="openDialog()">Edit</button>
         <button mat-raised-button>Remove</button>
     </mat-card-actions>
 </mat-card>

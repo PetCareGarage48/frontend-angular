@@ -1,3 +1,6 @@
+<div class="newBtn">
+    <button mat-raised-button color="primary" (click)="openDialog()">Add New Pet</button>
+</div>
 <mat-grid-list cols="4" rowHeight="700px">
     <mat-grid-tile *ngFor="let pet of pets">
         <app-pet [pet]="pet" class="m-16"></app-pet>

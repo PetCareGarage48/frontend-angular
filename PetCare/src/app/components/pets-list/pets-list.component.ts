@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PetService, Pet } from 'src/app/services/pet.service';
+import { PetFormComponent } from '../pet-form/pet-form.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-pets-list',
@@ -9,11 +11,21 @@ import { PetService, Pet } from 'src/app/services/pet.service';
 export class PetsListComponent implements OnInit {
   pets: Pet[];
 
-  constructor(private service: PetService) { }
+  constructor(private service: PetService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.service.getPets()
     .subscribe(pets => this.pets = pets);
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(PetFormComponent, {
+      width: '600px',      
+      data: {isCreate: true, pet: {}}
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed');
+    });
+}
 }

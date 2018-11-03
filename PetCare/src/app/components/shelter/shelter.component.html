@@ -1,23 +1,23 @@
 <div class="center">
     <img mat-card-image [src]="shelter.photo" class="shelter-full-width">
-    <form class="shelter-form">
+    <form class="shelter-form" (ngSubmit)="onSubmit()" [formGroup]="shelterForm">
         <mat-form-field class="shelter-full-width">
-            <input matInput placeholder="Organization Name" [value]="shelter.name">
+            <input matInput placeholder="Organization Name" formControlName="name">
         </mat-form-field>
 
         <mat-form-field class="shelter-full-width">
-            <input type="email" matInput placeholder="Email" [value]="shelter.email">
+            <input type="email" matInput placeholder="Email" formControlName="email">
         </mat-form-field>
 
         <mat-form-field class="shelter-full-width">
-            <input type="email" matInput placeholder="Address" [value]="shelter.address">
+            <input matInput placeholder="Address" formControlName="address">
         </mat-form-field>
 
         <mat-form-field class="shelter-full-width">
-            <input type="email" matInput placeholder="Description" [value]="shelter.description">
+            <input matInput placeholder="Description" formControlName="description">
         </mat-form-field>
 
-        <button mat-raised-button color="primary">Update</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!shelterForm.valid">Update</button>
 
     </form>
 </div>
