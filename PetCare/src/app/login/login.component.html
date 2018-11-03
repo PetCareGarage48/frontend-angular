@@ -1,12 +1,22 @@
 <h2 class="title">Login page</h2>
 
-<form class="login-form">
+<form [formGroup]="authForm" class="login-form" (ngSubmit)="authorize(authForm)" autocomplete="off">
   <mat-form-field>
-    <input type="email" matInput placeholder="e-mail">
+    <input
+      type="email"
+      formControlName="email"
+      matInput
+      placeholder="e-mail"
+      required>
   </mat-form-field>
 
   <mat-form-field>
-    <input type="password" matInput placeholder="password">
+    <input
+      type="password"
+      formControlName="password"
+      matInput
+      placeholder="password"
+      required>
   </mat-form-field>
 
   <div class="buttons">
@@ -14,4 +24,3 @@
     <button mat-raised-button disabled>Register</button>
   </div>
 </form>
-
