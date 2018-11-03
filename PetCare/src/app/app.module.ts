@@ -1,21 +1,21 @@
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-import { AppRoutingModule } from './app-routing.module';
-import { MaterialModule } from './material.module';
-
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { ShelterService } from './services/shelter.service';
-import { PetService } from './services/pet.service';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { PetsListComponent } from './components/pets-list/pets-list.component';
-import { ShelterComponent } from './components/shelter/shelter.component';
-import { PetComponent } from './components/pet/pet.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PetFormComponent } from './components/pet-form/pet-form.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { MaterialModule } from "./material.module";
+import { AppComponent } from "./app.component";
+import { HomeComponent } from "./home/home.component";
+import { LoginComponent } from "./login/login.component";
+import { ShelterService } from "./services/shelter.service";
+import { PetService } from "./services/pet.service";
+import { PetsListComponent } from "./components/pets-list/pets-list.component";
+import { ShelterComponent } from "./components/shelter/shelter.component";
+import { PetComponent } from "./components/pet/pet.component";
+import { PetFormComponent } from "./components/pet-form/pet-form.component";
+import { RegisterComponent } from "./register/register.component";
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { PetFormComponent } from './components/pet-form/pet-form.component';
     PetsListComponent,
     HomeComponent,
     LoginComponent,
-    PetFormComponent
+    PetFormComponent,
+    RegisterComponent
   ],
   imports: [
     HttpClientModule,
@@ -36,13 +37,8 @@ import { PetFormComponent } from './components/pet-form/pet-form.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  entryComponents: [
-    PetFormComponent
-  ],
-  providers: [
-    PetService,
-     ShelterService
-    ],
+  entryComponents: [PetFormComponent],
+  providers: [PetService, ShelterService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

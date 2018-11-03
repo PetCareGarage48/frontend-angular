@@ -7,11 +7,12 @@
         <button mat-direction="right" mat-icon-button [matMenuTriggerFor]="appMenu">
       <mat-icon>menu</mat-icon>
     </button>
-        <mat-menu #appMenu="matMenu">
-            <button mat-menu-item routerLink="/login" routerLinkActive="active">Login page</button>
-            <button mat-menu-item routerLink="/home" routerLinkActive="active">Home page</button>
-        </mat-menu>
-    </mat-toolbar>
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item routerLink="/login" routerLinkActive="active">Login page</button>
+      <button mat-menu-item routerLink="/register" routerLinkActive="active">Register page</button>
+      <button mat-menu-item routerLink="/home" routerLinkActive="active">Home page</button>
+    </mat-menu>
+  </mat-toolbar>
 </header>
 
 <router-outlet></router-outlet>

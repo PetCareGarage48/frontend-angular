@@ -20,7 +20,7 @@ export interface Location {
 
 @Injectable()
 export class ShelterService {
-  private serverLink = environment.API_URL;
+  private serverLink = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -34,14 +34,14 @@ export class ShelterService {
       };
 
         return of(sheltr as Shelter);
-        // this.http.get<Shelter>(this.serverLink + '/v1/shelters/shelter?shelterId='+shelterId);
+        // this.http.get<Shelter>(this.serverLink + '/shelters/shelter?shelterId='+shelterId);
     }
 
     addShelter(item: Shelter) {
-        return this.http.post<Shelter>(this.serverLink + '/v1/shelter/register', item);
+        return this.http.post<Shelter>(this.serverLink + '/shelter/register', item);
     }
 
     updateShelter(item: Shelter) {
-        return this.http.put<Shelter>(this.serverLink + '/v1/shelter', item);
+        return this.http.put<Shelter>(this.serverLink + '/shelter', item);
     }
 }

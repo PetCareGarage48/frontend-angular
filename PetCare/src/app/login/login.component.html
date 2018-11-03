@@ -1,3 +1,26 @@
-<p>
-  login works!
-</p>
+<h2 class="title">Login page</h2>
+
+<form [formGroup]="authForm" class="login-form" (ngSubmit)="authorize(authForm)" autocomplete="off">
+  <mat-form-field>
+    <input
+      type="email"
+      formControlName="email"
+      matInput
+      placeholder="e-mail"
+      required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      type="password"
+      formControlName="password"
+      matInput
+      placeholder="password"
+      required>
+  </mat-form-field>
+
+  <div class="buttons">
+    <button mat-raised-button color="primary">Login</button>
+    <button mat-raised-button color="secondary" (click)="register()">Register</button>
+  </div>
+</form>

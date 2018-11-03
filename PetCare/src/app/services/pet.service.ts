@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { pets } from '../../mocks/pets.js';
-import { of } from 'rxjs';
-
+import { Injectable } from "@angular/core";
+import { environment } from "src/environments/environment";
+import { HttpClient } from "@angular/common/http";
+import { map } from "rxjs/operators";
+import { pets } from "../../mocks/pets.js";
+import { of } from "rxjs";
 
 export interface Pet {
   name: string;
@@ -17,20 +16,21 @@ export interface Pet {
 
 @Injectable()
 export class PetService {
-  private serverLink = environment.API_URL;
+  private serverLink = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-    getPets() {
-        return this.http.get<any>(this.serverLink + '/v1/pets')
-        .pipe(map(res => res.data.map(p => p as Pet)));
-    }
+  getPets() {
+    return this.http
+      .get<any>(this.serverLink + "/pets")
+      .pipe(map(res => res.data.map(p => p as Pet)));
+  }
 
-    addPet(item: Pet) {
-        return this.http.post<Pet>(this.serverLink + '/v1/pet/', item);
-    }
+  addPet(item: Pet) {
+    return this.http.post<Pet>(this.serverLink + "/pet/", item);
+  }
 
-    updatePet(item: Pet) {
-      return this.http.put<Pet>(this.serverLink + '/v1/pet/', item);
+  updatePet(item: Pet) {
+    return this.http.put<Pet>(this.serverLink + "/pet/", item);
   }
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://api.pet-care.nerdzlab.com/'
+  apiUrl: 'https://api.pet-care.nerdzlab.com/v1'
 };
 
 /*
