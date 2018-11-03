@@ -1,0 +1,18 @@
+.title {
+    text-align: center;
+}
+.register-form {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        button {
+            width: 49%;
+        }
+    }
+}

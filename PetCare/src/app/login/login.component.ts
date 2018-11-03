@@ -27,6 +27,9 @@ export class LoginComponent implements OnInit {
   }
 
   authorize(formData) {
+    if (formData.invalid) {
+      return;
+    }
     console.log("form data: ", formData.value);
     this.authorizationService
       .login(formData)
