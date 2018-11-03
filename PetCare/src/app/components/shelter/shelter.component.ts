@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Shelter } from 'src/app/services/shelter.service';
+import { Shelter, ShelterService } from 'src/app/services/shelter.service';
 
 @Component({
   selector: 'app-shelter',
@@ -7,12 +7,14 @@ import { Shelter } from 'src/app/services/shelter.service';
   styleUrls: ['./shelter.component.scss']
 })
 export class ShelterComponent implements OnInit {
-  @Input() shelter: Shelter;
+  shelter: Shelter;
 
-  constructor() {
+  constructor(private service: ShelterService) {
    }
 
   ngOnInit() {
+   this.service.getShelter().subscribe(shelter =>
+     this.shelter = shelter);
   }
 
 }

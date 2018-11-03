@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { of, Observable } from 'rxjs';
 
 export interface Shelter {
   name: string;
@@ -23,8 +24,17 @@ export class ShelterService {
 
   constructor(private http: HttpClient) { }
 
-    getShelters() {
-        return this.http.get<Shelter[]>(this.serverLink + '/v1/shelters');
+    getShelter(): Observable<Shelter> {
+      const sheltr = {
+        name: 'Charity',
+        email: 'charity@gmail.com',
+        address: 'Lviv',
+        description: 'Small shelter',
+        photo: 'https://nodogaboutit.files.wordpress.com/2010/07/picture-198.png'
+      };
+
+        return of(sheltr as Shelter);
+        // this.http.get<Shelter>(this.serverLink + '/v1/shelter');
     }
 
     addShelter(item: Shelter) {

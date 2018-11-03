@@ -14,6 +14,11 @@ import { LoginComponent } from './login/login.component';
 import { PetService } from './services/pet.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { ShelterService } from './services/shelter.service';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -31,9 +36,14 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserAnimationsModule,
     MatCardModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatIconModule
   ],
-  providers: [PetService],
+  providers: [PetService,
+     ShelterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

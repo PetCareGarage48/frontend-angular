@@ -1,11 +1,23 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>{{ shelter.name }}</mat-card-title>
-        <mat-card-subtitle>{{ shelter.email }}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="shelter.photo">
-    <mat-card-content>
-        <p>{{ shelter.address }}</p>
-        <p>{{ shelter.description }}</p>
-    </mat-card-content>
-</mat-card>
+<div class="center">
+    <img mat-card-image [src]="shelter.photo" class="shelter-full-width">
+    <form class="shelter-form">
+        <mat-form-field class="shelter-full-width">
+            <input matInput placeholder="Organization Name" [value]="shelter.name">
+        </mat-form-field>
+
+        <mat-form-field class="shelter-full-width">
+            <input type="email" matInput placeholder="Email" [value]="shelter.email">
+        </mat-form-field>
+
+        <mat-form-field class="shelter-full-width">
+            <input type="email" matInput placeholder="Address" [value]="shelter.address">
+        </mat-form-field>
+
+        <mat-form-field class="shelter-full-width">
+            <input type="email" matInput placeholder="Description" [value]="shelter.description">
+        </mat-form-field>
+
+        <button mat-raised-button color="primary">Update</button>
+
+    </form>
+</div>
