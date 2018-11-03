@@ -51,13 +51,13 @@ export class AuthorizationService {
       .post<AuthorizationResult>(this.registerUrl, JSON.stringify(userData), httpOptions)
       .pipe(
         tap(data => {
+          this.isAuthorized = true;
           console.log("response", data);
-          alert(data.message);
           return data;
         }),
         catchError(err => {
+          this.isAuthorized = false;
           console.error("Auth failed ", err);
-          alert(err.message);
           return err;
         })
       );
@@ -81,10 +81,12 @@ export class AuthorizationService {
       .post<AuthorizationResult>(this.loginUrl, body.toString(), httpOptions)
       .pipe(
         tap(data => {
+          this.isAuthorized = true;
           console.log("response", data);
           return data;
         }),
         catchError(err => {
+          this.isAuthorized = false;
           console.error("Auth failed ", err);
           return err;
         })

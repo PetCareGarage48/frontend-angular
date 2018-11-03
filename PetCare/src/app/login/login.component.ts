@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.authForm = new FormGroup({
       email: new FormControl(this.email, [Validators.required]),
-      password: new FormControl(this.email, [Validators.required])
+      password: new FormControl(this.password, [Validators.required])
     });
   }
 
@@ -30,17 +30,16 @@ export class LoginComponent implements OnInit {
     console.log("form data: ", formData.value);
     this.authorizationService
       .login(formData)
-      .subscribe(this.onLoginSucess, this.onError);
+      .subscribe(this.onLoginSucess);
   }
 
-  register() {
+  register = () => {
     this.router.navigate(["register"]);
   }
 
-  onLoginSucess(data) {
-    console.log('login sucess!', data);
+  onLoginSucess = response => {
+    console.log('login sucess!', response);
+    localStorage.setItem('access_token', JSON.stringify(response.data));
     this.router.navigate(["home"]);
   }
-
-  onError(error) {}
 }
