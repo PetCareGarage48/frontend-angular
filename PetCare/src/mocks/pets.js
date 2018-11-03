@@ -15,7 +15,7 @@ export const pets = [{
         age: "3 years",
         description: "The cuttest cat in a world",
         address: "London",
-        photo: "https://pbs.twimg.com/media/DYLuNt2UQAEqaOs.jpg"
+        photo: "https://amp.businessinsider.com/images/5485631e69bedda63303ed51-750-563.jpg"
     },
     {
         name: "Tom",
@@ -34,7 +34,7 @@ export const pets = [{
         age: "3 years",
         description: "The cuttest cat in a world",
         address: "London",
-        photo: "https://pbs.twimg.com/media/DYLuNt2UQAEqaOs.jpg"
+        photo: "https://amp.businessinsider.com/images/5485631e69bedda63303ed51-750-563.jpg"
     },
     {
         name: "Tom",
@@ -53,7 +53,7 @@ export const pets = [{
         age: "3 years",
         description: "The cuttest cat in a world",
         address: "London",
-        photo: "https://pbs.twimg.com/media/DYLuNt2UQAEqaOs.jpg"
+        photo: "https://amp.businessinsider.com/images/5485631e69bedda63303ed51-750-563.jpg"
     },
     {
         name: "Tom",
@@ -73,6 +73,6 @@ export const pets = [{
         age: "3 years",
         description: "The cuttest cat in a world",
         address: "London",
-        photo: "https://pbs.twimg.com/media/DYLuNt2UQAEqaOs.jpg"
+        photo: "https://amp.businessinsider.com/images/5485631e69bedda63303ed51-750-563.jpg"
     }
 ]
