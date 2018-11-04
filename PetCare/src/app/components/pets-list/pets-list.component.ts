@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material';
 export class PetsListComponent implements OnInit {
   pets: Pet[];
   @Input() shelterId: string;
+  colums = 3;
 
   constructor(private service: PetService, public dialog: MatDialog) { }
 
@@ -19,6 +20,7 @@ export class PetsListComponent implements OnInit {
     .subscribe(pets => {
       this.pets = pets;
     });
+    this.onResize(false);
   }
 
   openDialog(): void {
@@ -30,5 +32,17 @@ export class PetsListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       console.log('The dialog was closed');
     });
-}
+  }
+
+  onResize(event) {
+    const width = event ? event.target.innerWidth : window.innerWidth;
+
+    if (width <= 600) {
+      this.colums = 1;
+    } else if (width > 600 && width <= 1000) {
+      this.colums = 2;
+    } else {
+      this.colums = 3;
+    }
+  }
 }
