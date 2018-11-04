@@ -50,8 +50,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSucess = response => {
-    console.log('register sucess!', response);
-    localStorage.setItem('access_token', JSON.stringify(response.data));
     this.router.navigate(["home"]);
   }
 }

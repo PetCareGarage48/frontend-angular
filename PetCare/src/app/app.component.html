@@ -8,14 +8,15 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #appMenu="matMenu">
-      <button mat-menu-item routerLink="/login" routerLinkActive="active">Login page</button>
-      <button mat-menu-item routerLink="/register" routerLinkActive="active">Register page</button>
-      <button mat-menu-item routerLink="/home" routerLinkActive="active">Home page</button>
+      <button mat-menu-item routerLink="/login" routerLinkActive="active">Login</button>
+      <button mat-menu-item routerLink="/register" routerLinkActive="active">Register</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
   </mat-toolbar>
 </header>
 
 <router-outlet></router-outlet>
+
 <mat-toolbar class="footer" color="primary">
     <mat-toolbar-row>
         <span>PetCare. All rights reserved. </span>

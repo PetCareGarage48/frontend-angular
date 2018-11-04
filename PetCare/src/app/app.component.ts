@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthorizationService } from 'src/services/authorization.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PetCare app';
+
+  constructor(
+    private router: Router,
+    private authorizationService: AuthorizationService
+  ) {}
+
+  logout() {
+    this.router.navigate(["login"]);
+    this.authorizationService.logOut();
+  }
 }

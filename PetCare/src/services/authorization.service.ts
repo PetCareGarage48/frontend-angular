@@ -53,6 +53,7 @@ export class AuthorizationService {
         tap(data => {
           this.isAuthorized = true;
           console.log("response", data);
+          localStorage.setItem('access_token', JSON.stringify(data));
           return data;
         }),
         catchError(err => {
@@ -83,6 +84,7 @@ export class AuthorizationService {
         tap(data => {
           this.isAuthorized = true;
           console.log("response", data);
+          localStorage.setItem('access_token', JSON.stringify(data));
           return data;
         }),
         catchError(err => {
@@ -95,5 +97,6 @@ export class AuthorizationService {
 
   logOut() {
     this.isAuthorized = false;
+    localStorage.removeItem('access_token');
   }
 }
