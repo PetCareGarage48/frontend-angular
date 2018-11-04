@@ -3,6 +3,6 @@
 </div>
 <mat-grid-list [cols]="colums" rowHeight="600px" (window:resize)="onResize($event)">
     <mat-grid-tile *ngFor="let pet of pets">
-        <app-pet [pet]="pet" class="m-16"></app-pet>
+        <app-pet (remove)="onRemove($event)" [pet]="pet" class="m-16"></app-pet>
     </mat-grid-tile>
 </mat-grid-list>

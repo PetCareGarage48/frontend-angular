@@ -38,8 +38,15 @@ export class PetService {
 
   uploadImage(file, id) {
     const uploadData = new FormData();
-    uploadData.append('multipartFile', file, id + '_pet.jpg');
-    return this.http.post<string>('/pets/pet/photo/save?id=' + id, uploadData, {headers: this.getAuthHeader()});
+    uploadData.append('multipartFile', file);
+    const headers = this.getAuthHeader();
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.append('Accept', 'application/json');
+    return this.http.post<string>(this.serverLink + '/pets/pet/photo/save?id=' + id, uploadData, {headers});
+  }
+
+  removePet(id) {
+    return this.http.delete(this.serverLink + '/pets?petId=' + id, {headers: this.getAuthHeader()});
   }
 
   private getTokenFromLocalStorage(): string {

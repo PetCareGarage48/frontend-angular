@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Pet } from 'src/app/services/pet.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PetFormComponent } from '../pet-form/pet-form.component';
@@ -10,6 +10,7 @@ import { PetFormComponent } from '../pet-form/pet-form.component';
 })
 export class PetComponent implements OnInit {
   @Input() pet: Pet;
+  @Output() remove = new EventEmitter<string>();
 
   constructor(public dialog: MatDialog) { }
 
@@ -18,6 +19,10 @@ export class PetComponent implements OnInit {
 
   public getPhoto() {
     return this.pet.photos ?  this.pet.photos[0] : 'assets/no-img.png';
+  }
+
+  onRemove() {
+    this.remove.emit(this.pet.id);
   }
 
   openDialog(): void {

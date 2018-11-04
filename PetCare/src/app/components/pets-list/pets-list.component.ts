@@ -23,6 +23,13 @@ export class PetsListComponent implements OnInit {
     this.onResize(false);
   }
 
+  onRemove(event) {
+    this.service.removePet(event)
+    .subscribe(() => {
+      this.pets = this.pets.filter(p => p.id !== event);
+    });
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(PetFormComponent, {
       width: '600px',
