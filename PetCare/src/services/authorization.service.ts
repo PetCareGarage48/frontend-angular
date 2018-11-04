@@ -1,7 +1,5 @@
 import { Injectable, Inject } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable, of, Subject, throwError } from "rxjs";
-import { map } from "rxjs/internal/operators/map";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { catchError, delay, tap } from "rxjs/operators";
 
 import { environment } from "../environments/environment";
@@ -22,8 +20,8 @@ export interface AuthorizationResult {
   providedIn: "root"
 })
 export class AuthorizationService {
-  private loginUrl = `${environment.apiUrl}/shelter/admins/login`;
-  private registerUrl = `${environment.apiUrl}/shelter/admins/register`;
+  private loginUrl = `${environment.apiUrl}/users/login`;
+  private registerUrl = `${environment.apiUrl}/users/register`;
 
   private isAuthorized = false;
 
@@ -38,10 +36,16 @@ export class AuthorizationService {
       return;
     }
     const userData = {
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
       email: form.value.email,
       password: form.value.password
     };
+    let params = new HttpParams();
+    params = params.append('isAdmin', 'true'); // TODO: for this time we register only admins
+
     const httpOptions = {
+      params: params,
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
