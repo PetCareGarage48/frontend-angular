@@ -68,18 +68,19 @@ export class AuthorizationService {
     if (form.invalid) {
       return;
     }
-    const body = new URLSearchParams();
-    body.set("email", form.value.email);
-    body.set("password", form.value.password);
+    const userData = {
+      email: form.value.email,
+      password: form.value.password
+    };
 
     const httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/json"
       })
     };
 
     return this.httpClient
-      .post<AuthorizationResult>(this.loginUrl, body.toString(), httpOptions)
+      .post<AuthorizationResult>(this.loginUrl, userData, httpOptions)
       .pipe(
         tap(data => {
           this.isAuthorized = true;
