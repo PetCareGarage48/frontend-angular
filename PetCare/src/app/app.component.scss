@@ -1,21 +1,31 @@
+:host() {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 header {
-    mat-toolbar {
-        display: flex;
-        justify-content: space-between;
-    }
-    h1 {
-        flex: 1;
-    }
+  mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+  h1 {
+    flex: 1;
+  }
 }
 
 .example-icon {
-    padding: 0 14px;
+  padding: 0 14px;
+}
+main {
+  flex: 2;
+  padding-bottom: 60px;
 }
 
 .example-spacer {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
-.footer {
-    margin-top: 30px;
+footer {
+  margin-top: 30px;
 }

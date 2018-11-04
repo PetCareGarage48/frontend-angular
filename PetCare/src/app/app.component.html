@@ -1,9 +1,8 @@
 <header>
-    <mat-toolbar>
+    <mat-toolbar color="primary">
         <h1>
             {{ title }} <i class="material-icons">pets</i>
         </h1>
-
         <button mat-direction="right" mat-icon-button [matMenuTriggerFor]="appMenu">
       <mat-icon>menu</mat-icon>
     </button>
@@ -14,12 +13,16 @@
   </mat-toolbar>
 </header>
 
-<router-outlet></router-outlet>
+<main>
+    <router-outlet></router-outlet>
+</main>
 
-<mat-toolbar class="footer" color="primary">
-    <mat-toolbar-row>
-        <span>PetCare. All rights reserved. </span>
-        <span class="example-spacer"></span>
-        <mat-icon class="example-icon">verified_user</mat-icon>
-    </mat-toolbar-row>
-</mat-toolbar>
+<footer>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>PetCare. All rights reserved. 2018 </span>
+            <span class="example-spacer"></span>
+            <mat-icon class="example-icon">verified_user</mat-icon>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</footer>
