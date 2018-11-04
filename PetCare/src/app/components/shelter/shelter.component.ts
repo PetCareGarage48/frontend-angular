@@ -16,7 +16,7 @@ export class ShelterComponent implements OnInit {
    }
 
   ngOnInit() {
-   this.service.getShelter().subscribe(shelter => {
+   this.service.getShelter(null).subscribe(shelter => {
      this.shelter = shelter;
      this.shelterForm = new FormGroup({
       name: new FormControl(this.shelter.name),
