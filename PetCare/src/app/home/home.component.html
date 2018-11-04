@@ -1,8 +1,13 @@
-<mat-tab-group>
-    <mat-tab label="Shelter page">
-        <app-shelter></app-shelter>
-    </mat-tab>
-    <mat-tab label="Pets page">
-        <app-pets-list></app-pets-list>
-    </mat-tab>
-</mat-tab-group>
+<div *ngIf="shelter">
+    <mat-tab-group>
+        <mat-tab label="Shelter page">
+            <app-shelter [shelter]="shelter"></app-shelter>
+        </mat-tab>
+        <mat-tab label="Pets page">
+            <app-pets-list [shelterId]="shelter.id"></app-pets-list>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+<div *ngIf="!shelter">
+    Loading ...
+</div>

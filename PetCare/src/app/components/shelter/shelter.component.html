@@ -1,8 +1,8 @@
-<div class="center">
-    <img mat-card-image [src]="shelter.photo" class="shelter-full-width">
+<div class="center" *ngIf="this.shelter">
+    <img mat-card-image src="assets/pets.jpg" class="shelter-full-width">
     <form class="shelter-form" (ngSubmit)="onSubmit()" [formGroup]="shelterForm">
         <mat-form-field class="shelter-full-width">
-            <input matInput placeholder="Organization Name" formControlName="name">
+            <input matInput placeholder="Organization Name" formControlName="title">
         </mat-form-field>
 
         <mat-form-field class="shelter-full-width">
@@ -10,14 +10,10 @@
         </mat-form-field>
 
         <mat-form-field class="shelter-full-width">
-            <input matInput placeholder="Address" formControlName="address">
-        </mat-form-field>
-
-        <mat-form-field class="shelter-full-width">
             <input matInput placeholder="Description" formControlName="description">
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit" [disabled]="!shelterForm.valid">Update</button>
+        <button mat-raised-button color="primary" type="submit">Update</button>
 
     </form>
 </div>

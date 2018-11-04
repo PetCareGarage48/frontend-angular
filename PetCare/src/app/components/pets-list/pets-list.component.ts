@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PetService, Pet } from 'src/app/services/pet.service';
 import { PetFormComponent } from '../pet-form/pet-form.component';
 import { MatDialog } from '@angular/material';
@@ -10,13 +10,13 @@ import { MatDialog } from '@angular/material';
 })
 export class PetsListComponent implements OnInit {
   pets: Pet[];
+  @Input() shelterId: string;
 
   constructor(private service: PetService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.service.getPets()
+    this.service.getPets(this.shelterId)
     .subscribe(pets => {
-      console.log(pets);
       this.pets = pets;
     });
   }
@@ -24,7 +24,7 @@ export class PetsListComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(PetFormComponent, {
       width: '600px',
-      data: {isCreate: true, pet: {}}
+      data: {isCreate: true, pet: { shelterId: this.shelterId}}
     });
 
     dialogRef.afterClosed().subscribe(() => {

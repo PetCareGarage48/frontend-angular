@@ -15,6 +15,10 @@
     <mat-form-field class="full-width">
         <input matInput placeholder="Gender" [(ngModel)]="pet.gender">
     </mat-form-field>
+    <div *ngIf="!isCreate">
+        <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+        <button mat-stroked-button (click)="fileInput.click()">Upload Photo</button>
+    </div>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Close</button>

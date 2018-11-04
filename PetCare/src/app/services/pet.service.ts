@@ -1,11 +1,13 @@
-import { Injectable } from "@angular/core";
-import { environment } from "src/environments/environment";
-import { HttpClient } from "@angular/common/http";
-import { map } from "rxjs/operators";
-import { pets } from "../../mocks/pets.js";
-import { of } from "rxjs";
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { pets } from '../../mocks/pets.js';
+import { of } from 'rxjs';
 
 export interface Pet {
+  id: string;
+  shelterId: string;
   name: string;
   age: number;
   description: string;
@@ -20,17 +22,33 @@ export class PetService {
 
   constructor(private http: HttpClient) {}
 
-  getPets() {
+  getPets(id) {
     return this.http
-      .get<any>(this.serverLink + "/pets")
+      .get<any>(this.serverLink + '/pets/shelter?shelterId=' + id)
       .pipe(map(res => res.data.map(p => p as Pet)));
   }
 
   addPet(item: Pet) {
-    return this.http.post<Pet>(this.serverLink + "/pet/", item);
+    return this.http.post<Pet>(this.serverLink + '/pets/pet', item, {headers: this.getAuthHeader()});
   }
 
   updatePet(item: Pet) {
-    return this.http.put<Pet>(this.serverLink + "/pet/", item);
+    return this.http.put<Pet>(this.serverLink + '/pets/pet', item, {headers: this.getAuthHeader()});
+  }
+
+  uploadImage(file, id) {
+    const uploadData = new FormData();
+    uploadData.append('multipartFile', file, id + '_pet.jpg');
+    return this.http.post<string>('/pets/pet/photo/save?id=' + id, uploadData, {headers: this.getAuthHeader()});
+  }
+
+  private getTokenFromLocalStorage(): string {
+    return localStorage.getItem('access_token');
+  }
+
+  private getAuthHeader() {
+    return new HttpHeaders({
+        Authorization: `${this.getTokenFromLocalStorage()}`
+    });
   }
 }

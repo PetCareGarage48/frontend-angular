@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Shelter, ShelterService } from 'src/app/services/shelter.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -8,27 +8,39 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./shelter.component.scss']
 })
 export class ShelterComponent implements OnInit {
-  shelter: Shelter;
-
+  @Input() shelter: Shelter;
   shelterForm: FormGroup;
 
   constructor(private service: ShelterService) {
-   }
+  }
 
   ngOnInit() {
-   this.service.getShelter(null).subscribe(shelter => {
-     this.shelter = shelter;
-     this.shelterForm = new FormGroup({
-      name: new FormControl(this.shelter.name),
-      email: new FormControl(this.shelter.email),
-      address: new FormControl(this.shelter.address),
-      description: new FormControl(this.shelter.description)
-    });
-    });
+    if (this.shelter) {
+      this.shelterForm = new FormGroup({
+        title: new FormControl(this.shelter.title),
+        email: new FormControl(this.shelter.email),
+        description: new FormControl(this.shelter.description)
+      });
+    } else {
+      this.initializeEmptyForm();
+    }
   }
 
   onSubmit() {
-    this.service.updateShelter(this.shelterForm.value);
+    this.shelter.title = this.shelterForm.value.title;
+    this.shelter.email = this.shelterForm.value.email;
+    this.shelter.description = this.shelterForm.value.description;
+
+      this.service.updateShelter(this.shelter)
+      .subscribe(() => console.log('updated'));
   }
+
+  private initializeEmptyForm() {
+    this.shelterForm = new FormGroup({
+    title: new FormControl(null),
+    email: new FormControl(null),
+    description: new FormControl(null)
+  });
+}
 
 }

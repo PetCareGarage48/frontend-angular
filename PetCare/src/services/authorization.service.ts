@@ -49,7 +49,7 @@ export class AuthorizationService {
       .pipe(
         tap(response => {
           this.isAuthorized = true;
-          localStorage.setItem('access_token', JSON.stringify(response.data.token));
+          localStorage.setItem('access_token', response.data.token);
           return response;
         }),
         catchError(err => {
@@ -80,7 +80,7 @@ export class AuthorizationService {
       .pipe(
         tap(response => {
           this.isAuthorized = true;
-          localStorage.setItem('access_token', JSON.stringify(response.data.token));
+          localStorage.setItem('access_token', response.data.token);
           return response;
         }),
         catchError(err => {

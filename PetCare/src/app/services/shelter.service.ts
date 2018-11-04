@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
+import { flatMap, mapTo } from 'rxjs/operators';
 
 export interface Shelter {
-  name: string;
+  id: string;
+  title: string;
   email: string;
-  address: string;
   description: string;
   location: Location;
   working_hours: [];
-  photo: string;
+  photos: [];
 }
 
 export interface Location {
@@ -24,24 +25,34 @@ export class ShelterService {
 
   constructor(private http: HttpClient) { }
 
-    getShelter(shelterId): Observable<Shelter> {
-      const sheltr = {
-        name: 'Charity',
-        email: 'charity@gmail.com',
-        address: 'Lviv',
-        description: 'Small shelter',
-        photo: 'https://nodogaboutit.files.wordpress.com/2010/07/picture-198.png'
-      };
+    getShelter(): any {
+      // const sheltr = {
+      //   name: 'Charity',
+      //   email: 'charity@gmail.com',
+      //   address: 'Lviv',
+      //   description: 'Small shelter',
+      //   photo: 'https://nodogaboutit.files.wordpress.com/2010/07/picture-198.png'
+      // };
 
-        return of(sheltr as Shelter);
-        // this.http.get<Shelter>(this.serverLink + '/shelters/shelter?shelterId='+shelterId);
+       // return of(sheltr as Shelter);
+       return this.http.get<Shelter>(this.serverLink + '/shelters/shelter/admin', {headers: this.getAuthHeader()});
     }
 
     addShelter(item: Shelter) {
-        return this.http.post<Shelter>(this.serverLink + '/shelter/register', item);
+        return this.http.post<Shelter>(this.serverLink + '/shelters/shelter', item,  {headers: this.getAuthHeader()});
     }
 
     updateShelter(item: Shelter) {
-        return this.http.put<Shelter>(this.serverLink + '/shelter', item);
+        return this.http.put<Shelter>(this.serverLink + '/shelters/shelter', item,  {headers: this.getAuthHeader()});
+    }
+
+    private getTokenFromLocalStorage(): string {
+      return localStorage.getItem('access_token');
+    }
+
+    private getAuthHeader() {
+      return new HttpHeaders({
+          Authorization: `${this.getTokenFromLocalStorage()}`
+      });
     }
 }
