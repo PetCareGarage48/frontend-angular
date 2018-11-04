@@ -25,7 +25,7 @@ export class AuthorizationService {
   private loginUrl = `${environment.apiUrl}/shelter/admins/login`;
   private registerUrl = `${environment.apiUrl}/shelter/admins/register`;
 
-  isAuthorized = false;
+  private isAuthorized = false;
 
   get isUserAuthorized() {
     return this.isAuthorized;

@@ -8,9 +8,8 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #appMenu="matMenu">
-      <button mat-menu-item routerLink="/login" routerLinkActive="active">Login</button>
-      <button mat-menu-item routerLink="/register" routerLinkActive="active">Register</button>
-      <button mat-menu-item (click)="logout()">Logout</button>
+      <button mat-menu-item *ngIf="!authorizationService.isUserAuthorized" routerLink="/login" routerLinkActive="active">Login</button>
+      <button mat-menu-item *ngIf="authorizationService.isUserAuthorized" (click)="logout()">Logout</button>
     </mat-menu>
   </mat-toolbar>
 </header>
