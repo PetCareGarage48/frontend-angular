@@ -16,7 +16,7 @@ export class AuthorizationService {
   private loginUrl = `${environment.apiUrl}/users/login`;
   private registerUrl = `${environment.apiUrl}/users/register`;
 
-  private isAuthorized = false;
+  private isAuthorized = !!localStorage.getItem('access_token');
 
   get isUserAuthorized() {
     return this.isAuthorized;

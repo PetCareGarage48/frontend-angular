@@ -30,8 +30,8 @@ export class RegisterComponent implements OnInit {
       firstName: new FormControl(this.formData.firstName, [Validators.required]),
       lastName: new FormControl(this.formData.lastName),
       email: new FormControl(this.formData.email, [Validators.required, Validators.email]),
-      password: new FormControl(this.formData.password, [Validators.required]),
-      passwordRepeat: new FormControl(this.formData.passwordRepeat, [Validators.required]),
+      password: new FormControl(this.formData.password, [Validators.required, Validators.minLength(8)]),
+      passwordRepeat: new FormControl(this.formData.passwordRepeat, [Validators.required, Validators.minLength(8)]),
     });
   }
 

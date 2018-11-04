@@ -8,7 +8,7 @@ import { AuthorizationService } from 'src/services/authorization.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'PetCare app';
+  title = 'PetCare';
 
   constructor(
     private router: Router,
