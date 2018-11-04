@@ -9,13 +9,6 @@ export interface AuthUserData {
   password: string;
 }
 
-export interface AuthorizationResult {
-  data: AuthUserData;
-  error: boolean;
-  message: string;
-  status: number;
-}
-
 @Injectable({
   providedIn: "root"
 })
@@ -52,13 +45,12 @@ export class AuthorizationService {
     };
 
     return this.httpClient
-      .post<AuthorizationResult>(this.registerUrl, JSON.stringify(userData), httpOptions)
+      .post<any>(this.registerUrl, JSON.stringify(userData), httpOptions)
       .pipe(
-        tap(data => {
+        tap(response => {
           this.isAuthorized = true;
-          console.log("response", data);
-          localStorage.setItem('access_token', JSON.stringify(data));
-          return data;
+          localStorage.setItem('access_token', JSON.stringify(response.data.token));
+          return response;
         }),
         catchError(err => {
           this.isAuthorized = false;
@@ -84,13 +76,12 @@ export class AuthorizationService {
     };
 
     return this.httpClient
-      .post<AuthorizationResult>(this.loginUrl, userData, httpOptions)
+      .post<any>(this.loginUrl, userData, httpOptions)
       .pipe(
-        tap(data => {
+        tap(response => {
           this.isAuthorized = true;
-          console.log("response", data);
-          localStorage.setItem('access_token', JSON.stringify(data));
-          return data;
+          localStorage.setItem('access_token', JSON.stringify(response.data.token));
+          return response;
         }),
         catchError(err => {
           this.isAuthorized = false;
