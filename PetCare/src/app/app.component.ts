@@ -12,7 +12,7 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private authorizationService: AuthorizationService
+    public authorizationService: AuthorizationService
   ) {}
 
   logout() {
