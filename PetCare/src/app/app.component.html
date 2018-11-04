@@ -9,7 +9,6 @@
     <mat-menu #appMenu="matMenu">
       <button mat-menu-item *ngIf="!authorizationService.isUserAuthorized" routerLink="/login" routerLinkActive="active">Login</button>
       <button mat-menu-item *ngIf="authorizationService.isUserAuthorized" (click)="logout()">Logout</button>
-      <button mat-menu-item *ngIf="authorizationService.isUserAuthorized" routerLink="/home" routerLinkActive="active">Home</button>
     </mat-menu>
   </mat-toolbar>
 </header>
